@@ -3,6 +3,7 @@ declare class Segment {
   /**
    * Removes uneeded chars from a string
    * @param {string} string The string to be cleaned
+   * @param {boolean} trim whether to trim the string
    * @returns {string} Cleaned version of string
    */
   static cleanString(string: string): string;
@@ -10,11 +11,13 @@ declare class Segment {
    * Creates a new segment object
    * @param {string} raw The raw string of a segment in X12 format
    * @param {object} delimiters An object of delimiters to be used to parse segment
+   * @param {boolean} trim whether to trim string values or not
    */
-  constructor(raw: string, delimiters: object);
+  constructor(raw: string, delimiters: object, trim: boolean);
   _delimiters: object;
   _parsed: any[];
   _name: string;
+  _trim: boolean;
   /** @type {string[]} */
   get parsed(): string[][];
   /** @type {string} */

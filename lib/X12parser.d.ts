@@ -14,8 +14,9 @@ declare class X12parser extends Transform {
   /**
    * Creates a new X12parser stream
    * @param {string} defaultEncoding The encoding of the file
+   * @param {boolean} trim Whether to trim the segments of whitespace
    */
-  constructor(defaultEncoding?: string);
+  constructor(defaultEncoding?: string, trim?: boolean);
   _decoder: any;
   _firstLine: boolean;
   _leftOver: string;
@@ -25,6 +26,7 @@ declare class X12parser extends Transform {
     element: string;
     repetition: string;
   };
+  _trim: boolean;
   /**
    * Do not directly use, this is called by readable stream methods when stream has finished
    * @param {function} cb Execute cb when done flushing
